@@ -1,161 +1,167 @@
-import Image from 'next/image';
-import styles from './custom-full-layout.module.css';
+// src/pages/ResourcesPage.jsx
+import React from "react";
+import { Bookmark, ArrowUpRight } from "lucide-react";
 
-/*
- * This component renders a static version of the MakerIM Resources page
- * based on the provided screenshot. It uses a combination of flexbox and
- * CSS Grid to arrange the header, search bar, filter chips, sidebar
- * categories, card grid, and footer. The resource data is hard‑coded to
- * match the entries shown in the image (titles and placeholder text).
- */
-
+// Lista temporal de recursos (puedes mover esto a un archivo JSON aparte)
 const resources = [
-  { id: 1,  title: 'Exactly',            description: 'Advanced AI artwork creation platform for artists that understands your style, creates inspiring images…', img: '/placeholder.png' },
-  { id: 2,  title: 'D&AD Awards',        description: 'Recognized globally, this award celebrates excellence in design and advertising, covering categories like UX/UI…', img: '/placeholder.png' },
-  { id: 3,  title: 'Grid System',        description: 'Josef Müller‑Brockmann’s classic grid system book and philosophy on clarity and order in graphic design.', img: '/placeholder.png' },
-  { id: 4,  title: 'Oto256',             description: 'Colour tool for finding lighter and darker colours based on any base tone. Great for gradients and borders.', img: '/placeholder.png' },
-  { id: 5,  title: 'Memorisely',         description: 'Immersive UX/UI design training through Figma, video classes and live bootcamps.', img: '/placeholder.png' },
-  { id: 6,  title: 'Leif Podhajsky',     description: 'Multidisciplinary visual artist and creative director producing cutting‑edge imagery.', img: '/placeholder.png' },
-  { id: 7,  title: 'Pentagram',          description: 'World’s largest independent design consultancy owned and run by its partners.', img: '/placeholder.png' },
-  { id: 8,  title: 'Brandfetch',         description: 'Makes it easy to manage your brand identity across the internet.', img: '/placeholder.png' },
-  { id: 9,  title: 'Reshot',             description: 'Instant downloads of curated SVG icons and vector illustrations, free with commercial licensing.', img: '/placeholder.png' },
-  { id: 10, title: 'Open Doodles',       description: 'Library of sketchy doodles of people free for personal and commercial use.', img: '/placeholder.png' },
-  { id: 11, title: 'Book Cover Archive', description: 'Archive celebrating excellence in book cover design.', img: '/placeholder.png' },
-  { id: 12, title: 'Gumroad',            description: 'Simple platform to sell digital products and memberships online.', img: '/placeholder.png' },
-  { id: 13, title: 'BLK Market',         description: 'One‑stop shop for digital artists with plugins, textures and more.', img: '/placeholder.png' },
-  { id: 14, title: 'Unsplash',           description: 'Beautiful, free images and photos you can use for any project.', img: '/placeholder.png' },
-  { id: 15, title: 'Brand New',          description: 'Division of UnderConsideration displaying opinions on corporate and brand identity work.', img: '/placeholder.png' },
-  { id: 16, title: 'Figma',              description: 'Leading collaborative design tool for building meaningful products.', img: '/placeholder.png' },
-  { id: 17, title: 'Ukiyo‑e',            description: 'Contemporary adaptation of the traditional Japanese art style with bold outlines and flat colours.', img: '/placeholder.png' },
-  { id: 18, title: 'Another Graphic',    description: 'Archive of graphic design focused on typographic treatment.', img: '/placeholder.png' },
-  { id: 19, title: 'Dinamo',             description: 'Swiss type design agency offering retail and bespoke typefaces.', img: '/placeholder.png' },
-  { id: 20, title: 'Vecteezy',           description: 'Resource for downloading free and paid vectors, illustrations and clip art.', img: '/placeholder.png' },
-  { id: 21, title: 'Motion Array',       description: 'Subscription‑based platform with templates, motion graphics, stock footage and sound effects.', img: '/placeholder.png' },
+  {
+    id: 1,
+    title: "Exactly",
+    description:
+      "AI artwork creation platform for artists that understands your style.",
+    image: "/images/resources/exactly.png",
+    link: "https://exactly.com",
+  },
+  {
+    id: 2,
+    title: "D&AD Awards",
+    description:
+      "Recognised globally, this award celebrates excellence in design and advertising.",
+    image: "/images/resources/dandad.png",
+    link: "https://www.dandad.org",
+  },
+  {
+    id: 3,
+    title: "Grid System",
+    description:
+      "Josef Müller-Brockmann’s grid systems emphasise clarity and functionality.",
+    image: "/images/resources/grid-system.png",
+    link: "https://example.com",
+  },
+  // ...agrega más recursos
 ];
 
-{/* Sidebar Categories */}
-<aside className={styles.sidebar}>
-  <ul>
-    <li>All</li>
-    <li>Artificial Intelligence</li>
-    <li>Awards Application</li>
-    <li>Books & Magazines</li>
-    <li>Colors</li>
-    <li>Courses & Tutorials</li>
-    <li>Designers Archive</li>
-    <li>Design Studios</li>
-    <li>Extensions & Plugins</li>
-    <li>Icons</li>
-    <li>Illustrations</li>
-    <li>Inspiration</li>
-    <li>Marketplaces</li>
-    <li>Mockups</li>
-    <li>Photography</li>
-    <li>Pro Guide Lines</li>
-    <li>Programs</li>
-    <li>Trends</li>
-    <li>Typography</li>
-    <li>Type Foundry</li>
-    <li>Ux / Ui</li>
-    <li>Vectors</li>
-    <li>Video & Motion</li>
-  </ul>
-</aside>
+const categories = [
+  "All",
+  "Artificial Intelligence",
+  "Awards Application",
+  "Books & Magazines",
+  "Colors",
+  "Courses & Tutorials",
+  "Designers Archive",
+  "Design Studios",
+  "Extensions & Plugins",
+  "Icons",
+  "Illustrations",
+  "Inspiration",
+  "Market Places",
+  "Mockups",
+  "Photography",
+  "Pro Guide Lines",
+  "Programs",
+  "Trends",
+  "Typography",
+  "Type Foundry",
+  "Ux / Ui",
+  "Vectors",
+  "Video & Motion",
 ];
 
-export default function CustomFullLayout() {
-  return (
-    <main className={styles.container}>
-      {/* Top navigation */}
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          MAKEROOM</span>
-        </div>
-        <nav className={styles.nav}>
-          <a href="#" className={styles.active}>Resources</a>
-          <a href="#">Feature</a>
-          <a href="#">Community</a>
-          <a href="#">Creative Block</a>
-        </nav>
-        <div className={styles.controls}>
-          <div className={styles.searchBar}><input type="text" placeholder="Search…" /></div>
-          <button className={styles.cta}>MAKE IT PRO</button>
-        </div>
-      </header>
+const Sidebar = () => (
+  <aside className="w-64 p-4 border-r border-gray-200">
+    <ul className="space-y-2 text-sm">
+      {categories.map((cat) => (
+        <li key={cat} className="hover:text-yellow-500 cursor-pointer">
+          {cat}
+        </li>
+      ))}
+    </ul>
+  </aside>
+);
 
-      {/* Filter chips */}
-      <div className={styles.filterRow}>
-        {['Free', 'Freetrial', 'Freemium', 'Paid', 'Staff Pick'].map((label) => (
-          <button key={label}>{label}</button>
-        ))}
-        {/* placeholder for star rating chip */}
-        <button className={styles.ratingChip}></button>
+const Filters = () => (
+  <div className="flex flex-wrap items-center gap-3 mb-6">
+    {["Free", "Freetrial", "Freemium", "Paid", "Staff Pick"].map((filter) => (
+      <button
+        key={filter}
+        className="px-3 py-1 text-xs border rounded-full hover:bg-gray-100"
+      >
+        {filter}
+      </button>
+    ))}
+  </div>
+);
+
+const ResourceCard = ({ resource }) => (
+  <div className="bg-white rounded-2xl border shadow-sm p-4 flex flex-col justify-between">
+    <img
+      src={resource.image}
+      alt={resource.title}
+      className="w-16 h-16 object-contain mb-4"
+    />
+    <h3 className="font-semibold text-sm mb-1">{resource.title}</h3>
+    <p className="text-xs text-gray-600 mb-3 line-clamp-3">
+      {resource.description}
+    </p>
+    <div className="flex justify-between items-center">
+      <a
+        href={resource.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-blue-600 flex items-center gap-1 hover:underline"
+      >
+        Visit <ArrowUpRight size={14} />
+      </a>
+      <button>
+        <Bookmark size={16} className="text-gray-500 hover:text-black" />
+      </button>
+    </div>
+  </div>
+);
+
+const Footer = () => (
+  <footer className="mt-10 border-t border-gray-200 p-6 text-sm text-gray-600">
+    <div className="grid md:grid-cols-3 gap-8">
+      <div>
+        <p className="font-semibold">MAKEROOM</p>
+        <p className="text-xs mt-2">
+          All the websites you need to get started & beyond, curated by creatives
+          like you.
+        </p>
       </div>
-
-      {/* Notice bar */}
-      <div className={styles.notice}>
-        Just a heads up! Every site comes with its own set of rules. You’ll want to follow those to make the most out of their content, trust me!
-      </div>
-
-      <div className={styles.content}>
-        {/* Sidebar */}
-        <aside className={styles.sidebar}>
-          <h4>All</h4>
-          <ul>
-            {categories.map((cat) => (
-              <li key={cat}><a href="#">{cat}</a></li>
-            ))}
-          </ul>
-        </aside>
-
-        {/* Cards grid */}
-        <section className={styles.grid}>
-          {resources.map(({ id, title, description, img }) => (
-            <div key={id} className={styles.card}>
-              <div className={styles.cardHeader}>
-                <div className={styles.spacer}></div>
-                {/* optional “SP” badge could go here */}
-                <button className={styles.bookmarkBtn}></button>
-              </div>
-              <Image src={img} alt={title} width={80} height={80} className={styles.cardImage} />
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
+      <div>
+        <p className="font-semibold mb-2">Resources</p>
+        <ul className="text-xs space-y-1">
+          {categories.slice(0, 10).map((c) => (
+            <li key={c}>{c}</li>
           ))}
-        </section>
+        </ul>
       </div>
+      <div>
+        <p className="font-semibold mb-2">Submit</p>
+        <input
+          type="email"
+          placeholder="Your email"
+          className="w-full border p-2 text-xs rounded mb-2"
+        />
+        <input
+          type="text"
+          placeholder="Share your web, book, design studio..."
+          className="w-full border p-2 text-xs rounded mb-2"
+        />
+        <button className="w-full bg-black text-white py-2 text-xs rounded">
+          Send
+        </button>
+      </div>
+    </div>
+  </footer>
+);
 
-      {/* Footer with resources list and submit form */}
-      <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <div className={styles.footerLogo}>
-            MAKER<span>IM</span>
-          </div>
-          <div className={styles.footerInfo}>
-            All the websites you need to know to get started & beyond, curated by creatives like you.
-          </div>
-          <div className={styles.footerLinks}>
-            <a href="#">About</a>
-            <a href="#">Resources</a>
-            <a href="#">Feature</a>
-            <a href="#">Community</a>
-            <a href="#">Creative Block</a>
-            <a href="#">Pricing</a>
-          </div>
-          <div className={styles.submitSection}>
-            <h4>Submit</h4>
-            <input type="email" placeholder="Your email" />
-            <input type="text" placeholder="Share your web, book, design studio…" />
-            <button>Send</button>
-          </div>
+const ResourcesPage = () => {
+  return (
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Filters />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {resources.map((res) => (
+            <ResourceCard key={res.id} resource={res} />
+          ))}
         </div>
-        <div className={styles.footerBottom}>
-          <p>© {new Date().getFullYear()} MAKEROOM</p>
-          <p>
-            SUBMIT A RESOURCES | SPONSOR US | PRIVACY POLICY | LEGAL NOTICE | TERMS
-          </p>
-        </div>
-      </footer>
-    </main>
+        <Footer />
+      </main>
+    </div>
   );
-}
+};
+
+export default ResourcesPage;
