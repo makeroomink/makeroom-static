@@ -33,12 +33,34 @@ const resources = [
   { id: 21, title: 'Motion Array',       description: 'Subscription‑based platform with templates, motion graphics, stock footage and sound effects.', img: '/placeholder.png' },
 ];
 
-const categories = [
-  'Artificial Intelligence', 'Awards Application', 'Books & Magazines', 'Colors',
-  'Courses & Tutorials', 'Designers Archive', 'Design Studios', 'Extensions & Plugins',
-  'Icons', 'Illustrations', 'Inspiration', 'Market Places', 'Mockups', 'Photography',
-  'Pro Guide Lines', 'Programs', 'Trends', 'Typography', 'Type Foundry', 'Ux / Ui',
-  'Vectors', 'Video & Motion'
+{/* Sidebar Categories */}
+<aside className={styles.sidebar}>
+  <ul>
+    <li>All</li>
+    <li>Artificial Intelligence</li>
+    <li>Awards Application</li>
+    <li>Books & Magazines</li>
+    <li>Colors</li>
+    <li>Courses & Tutorials</li>
+    <li>Designers Archive</li>
+    <li>Design Studios</li>
+    <li>Extensions & Plugins</li>
+    <li>Icons</li>
+    <li>Illustrations</li>
+    <li>Inspiration</li>
+    <li>Marketplaces</li>
+    <li>Mockups</li>
+    <li>Photography</li>
+    <li>Pro Guide Lines</li>
+    <li>Programs</li>
+    <li>Trends</li>
+    <li>Typography</li>
+    <li>Type Foundry</li>
+    <li>Ux / Ui</li>
+    <li>Vectors</li>
+    <li>Video & Motion</li>
+  </ul>
+</aside>
 ];
 
 export default function CustomFullLayout() {
@@ -47,7 +69,7 @@ export default function CustomFullLayout() {
       {/* Top navigation */}
       <header className={styles.header}>
         <div className={styles.logo}>
-          MAKER<span>IM</span>
+          MAKEROOM</span>
         </div>
         <nav className={styles.nav}>
           <a href="#" className={styles.active}>Resources</a>
