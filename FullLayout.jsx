@@ -1,6 +1,4 @@
-export default function FullLayout() {
-  return (
-    // <div className="w-[1440px] h-[3234px] relative bg-zinc-100 overflow-hidden">
+ ( // <div className="w-[1440px] h-[3234px] relative bg-zinc-100 overflow-hidden">
   <div className="w-[1440px] h-[552px] left-0 top-[2682px] absolute border-t-2 border-neutral-700">
     <div className="w-[1440px] h-[552px] left-0 top-0 absolute bg-neutral-700 border-2 border-neutral-700" />
     <div className="w-[1440px] h-[550.86px] left-0 top-0 absolute overflow-hidden">
