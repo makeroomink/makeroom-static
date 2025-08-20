@@ -1,53 +1,139 @@
-import React from 'react';
+import Image from 'next/image';
+import styles from './custom-full-layout.module.css';
 
-export default function FullLayout() {
+/*
+ * This component renders a static version of the MakerIM Resources page
+ * based on the provided screenshot. It uses a combination of flexbox and
+ * CSS Grid to arrange the header, search bar, filter chips, sidebar
+ * categories, card grid, and footer. The resource data is hard‑coded to
+ * match the entries shown in the image (titles and placeholder text).
+ */
+
+const resources = [
+  { id: 1,  title: 'Exactly',            description: 'Advanced AI artwork creation platform for artists that understands your style, creates inspiring images…', img: '/placeholder.png' },
+  { id: 2,  title: 'D&AD Awards',        description: 'Recognized globally, this award celebrates excellence in design and advertising, covering categories like UX/UI…', img: '/placeholder.png' },
+  { id: 3,  title: 'Grid System',        description: 'Josef Müller‑Brockmann’s classic grid system book and philosophy on clarity and order in graphic design.', img: '/placeholder.png' },
+  { id: 4,  title: 'Oto256',             description: 'Colour tool for finding lighter and darker colours based on any base tone. Great for gradients and borders.', img: '/placeholder.png' },
+  { id: 5,  title: 'Memorisely',         description: 'Immersive UX/UI design training through Figma, video classes and live bootcamps.', img: '/placeholder.png' },
+  { id: 6,  title: 'Leif Podhajsky',     description: 'Multidisciplinary visual artist and creative director producing cutting‑edge imagery.', img: '/placeholder.png' },
+  { id: 7,  title: 'Pentagram',          description: 'World’s largest independent design consultancy owned and run by its partners.', img: '/placeholder.png' },
+  { id: 8,  title: 'Brandfetch',         description: 'Makes it easy to manage your brand identity across the internet.', img: '/placeholder.png' },
+  { id: 9,  title: 'Reshot',             description: 'Instant downloads of curated SVG icons and vector illustrations, free with commercial licensing.', img: '/placeholder.png' },
+  { id: 10, title: 'Open Doodles',       description: 'Library of sketchy doodles of people free for personal and commercial use.', img: '/placeholder.png' },
+  { id: 11, title: 'Book Cover Archive', description: 'Archive celebrating excellence in book cover design.', img: '/placeholder.png' },
+  { id: 12, title: 'Gumroad',            description: 'Simple platform to sell digital products and memberships online.', img: '/placeholder.png' },
+  { id: 13, title: 'BLK Market',         description: 'One‑stop shop for digital artists with plugins, textures and more.', img: '/placeholder.png' },
+  { id: 14, title: 'Unsplash',           description: 'Beautiful, free images and photos you can use for any project.', img: '/placeholder.png' },
+  { id: 15, title: 'Brand New',          description: 'Division of UnderConsideration displaying opinions on corporate and brand identity work.', img: '/placeholder.png' },
+  { id: 16, title: 'Figma',              description: 'Leading collaborative design tool for building meaningful products.', img: '/placeholder.png' },
+  { id: 17, title: 'Ukiyo‑e',            description: 'Contemporary adaptation of the traditional Japanese art style with bold outlines and flat colours.', img: '/placeholder.png' },
+  { id: 18, title: 'Another Graphic',    description: 'Archive of graphic design focused on typographic treatment.', img: '/placeholder.png' },
+  { id: 19, title: 'Dinamo',             description: 'Swiss type design agency offering retail and bespoke typefaces.', img: '/placeholder.png' },
+  { id: 20, title: 'Vecteezy',           description: 'Resource for downloading free and paid vectors, illustrations and clip art.', img: '/placeholder.png' },
+  { id: 21, title: 'Motion Array',       description: 'Subscription‑based platform with templates, motion graphics, stock footage and sound effects.', img: '/placeholder.png' },
+];
+
+const categories = [
+  'Artificial Intelligence', 'Awards Application', 'Books & Magazines', 'Colors',
+  'Courses & Tutorials', 'Designers Archive', 'Design Studios', 'Extensions & Plugins',
+  'Icons', 'Illustrations', 'Inspiration', 'Market Places', 'Mockups', 'Photography',
+  'Pro Guide Lines', 'Programs', 'Trends', 'Typography', 'Type Foundry', 'Ux / Ui',
+  'Vectors', 'Video & Motion'
+];
+
+export default function CustomFullLayout() {
   return (
-    <div className="w-[1440px] h-[3234px] relative bg-zinc-100 overflow-hidden">
-      <div className="w-[1440px] h-[552px] left-0 top-[2682px] absolute border-t-2 border-neutral-700">
-        <div className="w-[1440px] h-[552px] left-0 top-0 absolute bg-neutral-700 border-2 border-neutral-700" />
-        <div className="w-[1440px] h-[550.86px] left-0 top-0 absolute overflow-hidden">
-          <div className="w-24 h-20 left-[48px] top-[56px] absolute" />
-          <div className="w-[662px] left-[732px] top-[110.88px] absolute inline-flex flex-col justify-start items-start gap-4">
-            <div className="justify-start text-zinc-100 text-4xl font-bold font-['Archivo_Narrow'] leading-[60px]">
-              Submit
-            </div>
-            <div className="self-stretch h-10 px-6 py-2 outline outline-1 outline-offset-[-1px] outline-stone-300 inline-flex justify-start items-center gap-2">
-              <div className="justify-start text-stone-300 text-base font-normal font-['SF_Pro_Text'] leading-normal">
-                Your email
-              </div>
-            </div>
-            <div className="self-stretch px-6 py-2 outline outline-1 outline-offset-[-1px] outline-stone-300 inline-flex justify-start items-center gap-2">
-              <div className="justify-start text-stone-300 text-base font-normal font-['SF_Pro_Text'] leading-normal">
-                Share your web, book, design studio.....
-              </div>
-            </div>
-            <div
-              data-property-1="Default"
-              className="w-80 h-12 px-4 py-3 bg-zinc-100 inline-flex justify-center items-center gap-4"
-            >
-              <div className="flex justify-start items-start gap-2">
-                <div className="justify-start text-neutral-700 text-base font-semibold font-['SF_Pro_Text'] leading-normal">
-                  Send
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-36 h-8 left-[1249px] top-[380.52px] absolute" />
-          <div className="w-[1348px] h-0 left-[46px] top-[487.50px] absolute outline outline-2 outline-offset-[-1px] outline-zinc-100"></div>
-          <div className="left-[46px] top-[499.50px] absolute inline-flex justify-start items-start gap-6">
-            <div className="w-28 h-5 justify-start text-zinc-100 text-xs font-normal font-['SF_Pro_Text'] leading-none">
-              © 2024 MAKEROOM
-            </div>
-            <div className="justify-start text-zinc-100 text-xs font-normal font-['SF_Pro_Text'] leading-none">
-              SUBMIT A RESOURCES | SPONSOR US | PRIVACY POLICY | LEGAL NOTICE | TERMS
-            </div>
-          </div>
-          {/* ... */}
-          {/* The rest of your nested divs go here exactly as in your snippet */}
-          {/* For brevity, only the opening part is shown here. Paste the remaining JSX exactly as you provided. */}
+    <main className={styles.container}>
+      {/* Top navigation */}
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          MAKER<span>IM</span>
         </div>
+        <nav className={styles.nav}>
+          <a href="#" className={styles.active}>Resources</a>
+          <a href="#">Feature</a>
+          <a href="#">Community</a>
+          <a href="#">Creative Block</a>
+        </nav>
+        <div className={styles.controls}>
+          <div className={styles.searchBar}><input type="text" placeholder="Search…" /></div>
+          <button className={styles.cta}>MAKE IT PRO</button>
+        </div>
+      </header>
+
+      {/* Filter chips */}
+      <div className={styles.filterRow}>
+        {['Free', 'Freetrial', 'Freemium', 'Paid', 'Staff Pick'].map((label) => (
+          <button key={label}>{label}</button>
+        ))}
+        {/* placeholder for star rating chip */}
+        <button className={styles.ratingChip}></button>
       </div>
-      {/* Repeat other sections of your layout in the same way */}
-    </div>
+
+      {/* Notice bar */}
+      <div className={styles.notice}>
+        Just a heads up! Every site comes with its own set of rules. You’ll want to follow those to make the most out of their content, trust me!
+      </div>
+
+      <div className={styles.content}>
+        {/* Sidebar */}
+        <aside className={styles.sidebar}>
+          <h4>All</h4>
+          <ul>
+            {categories.map((cat) => (
+              <li key={cat}><a href="#">{cat}</a></li>
+            ))}
+          </ul>
+        </aside>
+
+        {/* Cards grid */}
+        <section className={styles.grid}>
+          {resources.map(({ id, title, description, img }) => (
+            <div key={id} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <div className={styles.spacer}></div>
+                {/* optional “SP” badge could go here */}
+                <button className={styles.bookmarkBtn}></button>
+              </div>
+              <Image src={img} alt={title} width={80} height={80} className={styles.cardImage} />
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          ))}
+        </section>
+      </div>
+
+      {/* Footer with resources list and submit form */}
+      <footer className={styles.footer}>
+        <div className={styles.footerTop}>
+          <div className={styles.footerLogo}>
+            MAKER<span>IM</span>
+          </div>
+          <div className={styles.footerInfo}>
+            All the websites you need to know to get started & beyond, curated by creatives like you.
+          </div>
+          <div className={styles.footerLinks}>
+            <a href="#">About</a>
+            <a href="#">Resources</a>
+            <a href="#">Feature</a>
+            <a href="#">Community</a>
+            <a href="#">Creative Block</a>
+            <a href="#">Pricing</a>
+          </div>
+          <div className={styles.submitSection}>
+            <h4>Submit</h4>
+            <input type="email" placeholder="Your email" />
+            <input type="text" placeholder="Share your web, book, design studio…" />
+            <button>Send</button>
+          </div>
+        </div>
+        <div className={styles.footerBottom}>
+          <p>© {new Date().getFullYear()} MAKEROOM</p>
+          <p>
+            SUBMIT A RESOURCES | SPONSOR US | PRIVACY POLICY | LEGAL NOTICE | TERMS
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }
